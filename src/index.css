@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Tajawal", "Nunito", system-ui, sans-serif;
+  --font-body: "Tajawal", "Nunito", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg: #F0F5F1;
+  --color-bg-card: #FFFFFF;
+  --color-fg: #2C3E50;
+  --color-fg-secondary: #6B7C8A;
+  --color-fg-light: #95A5A6;
+  --color-accent: #E8A87C;
+  --color-accent-hover: #D4915F;
+  --color-green: #7BAE7F;
+  --color-green-light: #E8F5E9;
+  --color-blue: #7EB8D8;
+  --color-blue-light: #E3F2FD;
+  --color-red: #E88B8B;
+  --color-red-light: #FFEBEE;
+  --color-orange: #F0A868;
+  --color-orange-light: #FFF3E0;
+  --color-purple: #B39DDB;
+  --color-border: #E0E8E2;
+  --color-shadow: rgba(44, 62, 80, 0.06);
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--color-bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark {
+  --color-bg: #1A1F2E;
+  --color-bg-card: #242B3D;
+  --color-fg: #E8ECF1;
+  --color-fg-secondary: #9BA4B5;
+  --color-fg-light: #6B7A8D;
+  --color-accent: #E8A87C;
+  --color-accent-hover: #F0B98E;
+  --color-green: #7BAE7F;
+  --color-green-light: #1E3B20;
+  --color-blue: #7EB8D8;
+  --color-blue-light: #1A2D3D;
+  --color-red: #E88B8B;
+  --color-red-light: #3D1E1E;
+  --color-orange: #F0A868;
+  --color-orange-light: #3D2E1A;
+  --color-purple: #B39DDB;
+  --color-border: #333D50;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video, canvas { display: block; max-width: 100%; }
+button, a, input, textarea, select { font: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Custom thin scrollbar for desktop */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-fg-light); }
+
+/* Smooth page transitions */
+.page-enter { animation: fadeSlideIn 0.3s ease-out; }
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Active press effect for cards */
+.card-press { transition: transform 0.15s ease; }
+.card-press:active { transform: scale(0.97); }
+
+/* Safe area padding for mobile notch */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+.field-input {
+  width: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-fg);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field-input::placeholder { color: var(--color-fg-light); }
+.field-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(232, 168, 124, 0.15);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background: var(--color-border);
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.toggle-switch.active { background: var(--color-accent); }
+.toggle-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+.toggle-switch.active::after { transform: translateX(22px); }

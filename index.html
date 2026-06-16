@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#F0F5F1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1A1F2B" media="(prefers-color-scheme: dark)" />
+    <meta name="description" content="NutriFlow - رفيقك الذكي لتتبع السعرات الحرارية وإدارة النظام الغذائي" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="NutriFlow" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <title>NutriFlow - تطبيق تتبع السعرات</title>
+    <style>
+      /* Splash screen while JS loads */
+      #splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#F0F5F1;z-index:9999;transition:opacity .4s ease}
+      #splash.hide{opacity:0;pointer-events:none}
+      @media(prefers-color-scheme:dark){#splash{background:#1A1F2B}}
+      .splash-logo{width:64px;height:64px;animation:pulse 1.5s ease-in-out infinite}
+      @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.85}}
+    </style>
+  </head>
+  <body>
+    <div id="splash">
+      <img class="splash-logo" src="/favicon.svg" alt="NutriFlow" />
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
